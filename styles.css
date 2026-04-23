@@ -362,17 +362,38 @@ section, footer, nav { position: relative; z-index: 1; }
     overflow: hidden;
     border-radius: 24px;
     min-height: 340px;
-    background:
-        url("./PhenomeBeauty%20%20Book%20Online.png") center top / cover no-repeat;
     border: 1px solid rgba(255,255,255,0.14);
     box-shadow: var(--shadow-md);
+    background: none;
 }
 
+/* Background image — replaces the old ./PhenomeBeauty url */
+.feature-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("https://iili.io/fpLVF9e.png") center center / cover no-repeat;
+    z-index: 0;
+    transition: transform 0.5s ease;
+}
+
+/* Dark gradient overlay — heavier at the bottom where text sits */
 .feature-card::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 20%, rgba(0,0,0,0.88) 100%);
+    background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0.18) 0%,
+        rgba(0,0,0,0.55) 45%,
+        rgba(0,0,0,0.92) 100%
+    );
+    z-index: 1;
+}
+
+/* Subtle zoom on hover */
+.feature-card:hover::before {
+    transform: scale(1.04);
 }
 
 .feature-content {
