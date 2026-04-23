@@ -10,17 +10,12 @@
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-    <!-- =====================
-         NAVBAR
-    ===================== -->
     <nav class="navbar" id="navbar">
         <div class="container">
             <div class="navbar-inner">
-
                 <a href="#home" class="logo">.pb</a>
 
-                <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -37,190 +32,181 @@
                 <div class="nav-cta">
                     <a href="#booking" class="btn btn-primary">Book Now</a>
                 </div>
-
             </div>
         </div>
     </nav>
 
-    <!-- =====================
-         HERO
-    ===================== -->
     <section id="home" class="hero section">
         <div class="container">
             <div class="hero-panel reveal">
-
                 <div class="hero-layout">
-
-                    <!-- Left: copy -->
                     <div class="hero-copy">
                         <span class="section-kicker">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 6v6l4 2"></path>
+                            </svg>
                             Cape Town · Mobile Beauty
                         </span>
 
-                        <h1>Phenom<br/>Beauty.</h1>
+                        <h1>Beauty,<br />refined.<br />At home.</h1>
 
-                        <p>Professional mobile waxing &amp; beauty services delivered to your door. Convenience, hygiene, and expertise — all in one visit.</p>
+                        <p>Professional mobile waxing and beauty services delivered to your door with a luxury, client-first experience across Cape Town.</p>
 
                         <div class="hero-actions">
-                            <a href="https://phenomebeauty.nextslot.co.za/" target="_blank" class="btn btn-primary">
+                            <a href="https://phenomebeauty.nextslot.co.za/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
                                 Book Appointment
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"></path>
+                                    <path d="M12 5l7 7-7 7"></path>
+                                </svg>
                             </a>
+
                             <a href="#services" class="btn btn-secondary">View Services</a>
                         </div>
 
                         <div class="hero-meta">
-                            <span class="meta-pill">✓ Mobile across Cape Town</span>
-                            <span class="meta-pill">✓ Flexible scheduling</span>
-                            <span class="meta-pill">✓ 5★ rated</span>
+                            <span class="meta-pill">Mobile across Cape Town</span>
+                            <span class="meta-pill">Professional care</span>
+                            <span class="meta-pill">Easy online booking</span>
                         </div>
                     </div>
 
-                    <!-- Right: visual -->
                     <div class="hero-visual">
-
                         <div class="feature-card">
                             <div class="feature-content">
-                                <span class="feature-tag">Now Booking</span>
-                                <h3>Your beauty,<br/>at your door.</h3>
-                                <p>Skip the salon. We come to you with everything needed for a flawless treatment.</p>
+                                <span class="feature-tag">Featured</span>
+                                <h3>Luxury beauty without the salon trip.</h3>
+                                <p>Designed around convenience, comfort, and premium personal care in your own space.</p>
                             </div>
                         </div>
 
                         <div class="hero-mini-grid">
-                            <div class="hero-mini-card">
-                                <span>Full Body<br/>Waxing</span>
-                            </div>
-                            <div class="hero-mini-card">
-                                <span>Brazilian<br/>Waxing</span>
-                            </div>
-                            <div class="hero-mini-card">
-                                <span>Facial<br/>Waxing</span>
-                            </div>
+                            <div class="hero-mini-card"><span>Brazilian<br />Waxing</span></div>
+                            <div class="hero-mini-card"><span>Facial<br />Waxing</span></div>
+                            <div class="hero-mini-card"><span>Body<br />Care</span></div>
                         </div>
-
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- =====================
-         BLOG
-    ===================== -->
     <section id="blog" class="blog-section section">
         <div class="container">
-
             <div class="section-shell section-inner reveal">
                 <span class="section-kicker">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 20h9"></path>
+                        <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                    </svg>
                     Editorial
                 </span>
+
                 <h2 class="section-title">Latest from the Blog</h2>
-                <p class="section-copy">Beauty tips, aftercare guides, and expert advice straight from the team.</p>
+                <p class="section-copy">Beauty tips, aftercare guidance, and practical advice for smooth results between appointments.</p>
 
                 <div class="blog-grid">
-
                     <article class="blog-card reveal">
                         <h3>Waxing Aftercare: Do's and Don'ts</h3>
                         <p>Essential tips to keep your skin smooth and healthy after your waxing appointment.</p>
-                        <a href="https://drive.google.com/drive/folders/1QbwSDFJb2H8CHqYsQyMuqsvZ0YaZ1bjL" target="_blank" class="btn-link">
+                        <a href="https://drive.google.com/drive/folders/1QbwSDFJb2H8CHqYsQyMuqsvZ0YaZ1bjL" target="_blank" rel="noopener noreferrer" class="btn-link">
                             Read More
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5l7 7-7 7"></path>
+                            </svg>
                         </a>
                     </article>
 
                     <article class="blog-card reveal">
                         <h3>Why Choose Mobile Beauty Services?</h3>
                         <p>Discover the convenience and benefits of having professional beauty treatments at your location.</p>
-                        <a href="https://drive.google.com/drive/folders/1QbwSDFJb2H8CHqYsQyMuqsvZ0YaZ1bjL" target="_blank" class="btn-link">
+                        <a href="https://drive.google.com/drive/folders/1QbwSDFJb2H8CHqYsQyMuqsvZ0YaZ1bjL" target="_blank" rel="noopener noreferrer" class="btn-link">
                             Read More
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5l7 7-7 7"></path>
+                            </svg>
                         </a>
                     </article>
 
                     <article class="blog-card reveal">
                         <h3>Preparing for Your First Brazilian Wax</h3>
                         <p>Everything you need to know before your first Brazilian waxing appointment.</p>
-                        <a href="https://drive.google.com/drive/folders/1QbwSDFJb2H8CHqYsQyMuqsvZ0YaZ1bjL" target="_blank" class="btn-link">
+                        <a href="https://drive.google.com/drive/folders/1QbwSDFJb2H8CHqYsQyMuqsvZ0YaZ1bjL" target="_blank" rel="noopener noreferrer" class="btn-link">
                             Read More
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5l7 7-7 7"></path>
+                            </svg>
                         </a>
                     </article>
-
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- =====================
-         GUIDES
-    ===================== -->
     <section id="guides" class="guides-section section">
         <div class="container">
-
             <div class="section-shell section-inner reveal">
                 <span class="section-kicker">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 016.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"></path>
+                    </svg>
                     Resources
                 </span>
+
                 <h2 class="section-title">Beauty Guides</h2>
-                <p class="section-copy">Curated resources to help you get the most from every treatment.</p>
+                <p class="section-copy">Curated resources to help clients prepare properly, care for their skin, and get better long-term results.</p>
 
                 <div class="guides-grid">
-
                     <div class="guide-card reveal">
                         <h3>Complete Waxing Guide</h3>
-                        <p>Your comprehensive resource for all things waxing — from preparation to aftercare.</p>
-                        <a href="https://drive.google.com/drive/folders/1QbwSDFJb2H8CHqYsQyMuqsvZ0YaZ1bjL" target="_blank" class="btn btn-secondary">View Guide</a>
+                        <p>Your complete resource for waxing prep, appointments, and aftercare.</p>
+                        <a href="https://drive.google.com/drive/folders/1QbwSDFJb2H8CHqYsQyMuqsvZ0YaZ1bjL" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">View Guide</a>
                     </div>
 
                     <div class="guide-card reveal">
                         <h3>Skin Care Tips</h3>
-                        <p>Expert advice on maintaining healthy, glowing skin between treatments.</p>
-                        <a href="https://drive.google.com/drive/folders/1QbwSDFJb2H8CHqYsQyMuqsvZ0YaZ1bjL" target="_blank" class="btn btn-secondary">View Guide</a>
+                        <p>Simple maintenance tips to keep your skin calm, healthy, and glowing.</p>
+                        <a href="https://drive.google.com/drive/folders/1QbwSDFJb2H8CHqYsQyMuqsvZ0YaZ1bjL" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">View Guide</a>
                     </div>
 
                     <div class="guide-card reveal">
                         <h3>FAQ &amp; Policies</h3>
-                        <p>Find answers to common questions and learn about our service policies.</p>
-                        <a href="https://forms.gle/KpSTEwfYd1DQS6iC9" target="_blank" class="btn btn-secondary">View FAQ</a>
+                        <p>Find answers to common questions and view booking expectations and policies.</p>
+                        <a href="https://forms.gle/KpSTEwfYd1DQS6iC9" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">View FAQ</a>
                     </div>
-
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- =====================
-         SERVICES
-    ===================== -->
     <section id="services" class="services-section section">
         <div class="container">
-
             <div class="section-shell section-inner reveal">
                 <span class="section-kicker">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                    What We Offer
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                    Services
                 </span>
+
                 <h2 class="section-title">Our Services</h2>
-                <p class="section-copy">Every service is performed with professional-grade products, strict hygiene standards, and years of expertise.</p>
+                <p class="section-copy">Professional mobile beauty treatments tailored to comfort, confidence, and convenience.</p>
 
                 <div class="services-grid">
-
                     <div class="service-card reveal">
                         <h3>Full Body Waxing</h3>
-                        <p>Complete body waxing for smooth, hair-free skin from head to toe.</p>
+                        <p>Complete body waxing service for smooth, hair-free skin from head to toe.</p>
                         <span class="price">From R500</span>
                     </div>
 
                     <div class="service-card reveal">
                         <h3>Brazilian Waxing</h3>
-                        <p>Professional Brazilian waxing with the highest hygiene standards.</p>
+                        <p>Professional Brazilian waxing with high hygiene and aftercare standards.</p>
                         <span class="price">From R300</span>
                     </div>
 
@@ -232,89 +218,87 @@
 
                     <div class="service-card reveal">
                         <h3>Consultation</h3>
-                        <p>Free consultation to discuss your beauty needs and preferences.</p>
+                        <p>A free consultation to discuss your beauty needs and preferred treatment plan.</p>
                         <span class="price">Free</span>
                     </div>
-
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- =====================
-         BOOKING
-    ===================== -->
     <section id="booking" class="booking-section section">
         <div class="container">
-
             <div class="section-shell section-inner reveal">
                 <span class="section-kicker">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                    Reserve Your Spot
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    Booking
                 </span>
 
                 <div class="booking-content">
-
                     <div class="booking-info">
-                        <h3>Book Your<br/>Appointment.</h3>
-                        <p>Mobile beauty services delivered across Cape Town. Professional waxing in the comfort of your own space — no travel, no waiting rooms.</p>
+                        <h3>Book Your<br />Appointment.</h3>
+                        <p>Mobile beauty services delivered across Cape Town. Professional waxing in the comfort of your own space with no travel or waiting rooms.</p>
 
                         <ul class="booking-features">
                             <li>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
                                 Mobile services across Cape Town
                             </li>
                             <li>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
                                 Professional waxing treatments
                             </li>
                             <li>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
                                 Hygiene &amp; safety guaranteed
                             </li>
                             <li>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
                                 Flexible scheduling
                             </li>
                         </ul>
 
-                        <a href="https://phenomebeauty.nextslot.co.za/" target="_blank" class="btn btn-primary">
+                        <a href="https://phenomebeauty.nextslot.co.za/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
                             Open Booking App
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5l7 7-7 7"></path>
+                            </svg>
                         </a>
                     </div>
 
                     <div class="phone-mockup">
-                        <a href="https://phenomebeauty.nextslot.co.za/" target="_blank" class="phone-frame">
+                        <a href="https://phenomebeauty.nextslot.co.za/" target="_blank" rel="noopener noreferrer" class="phone-frame">
                             <div class="phone-notch"></div>
                             <div class="phone-screen">
                                 <div class="phone-screen-content">
-                                    <img
-                                        src="./assets/booking-preview.jpg"
-                                        class="phone-screenshot"
-                                        alt="PhenomeBeauty Booking App Preview"
-                                    />
+                                    <img src="./PhenomeBeauty%20%20Book%20Online.png" class="phone-screenshot" alt="PhenomeBeauty Booking App Preview" />
                                 </div>
                             </div>
                         </a>
                     </div>
-
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- =====================
-         FOOTER
-    ===================== -->
     <footer class="footer">
         <div class="container">
             <div class="footer-shell">
-
                 <div class="footer-content">
-
                     <div class="footer-section">
                         <h4>.pb — PhenomeBeauty</h4>
                         <p>Mobile beauty specialist based in Cape Town. Professional waxing services delivered to your door.</p>
@@ -332,8 +316,8 @@
 
                     <div class="footer-section">
                         <h4>Contact</h4>
-                        <p>hello@phenomebeauty.co.za</p>
-                        <p>+27 74 511 5725</p>
+                        <p>Email: hello@phenomebeauty.co.za</p>
+                        <p>Phone: +27 74 511 5725</p>
                         <p>Cape Town, South Africa</p>
                     </div>
 
@@ -345,13 +329,11 @@
                             <a href="https://linktr.ee/Phenomebeauty" target="_blank" rel="noopener noreferrer">Linktree</a>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="footer-bottom">
-                    <p>&copy; 2025 PhenomeBeauty. All rights reserved. Powered by <a href="https://nextslot.co.za" target="_blank" rel="noopener noreferrer" style="color:inherit;opacity:0.7;">NextSlot</a>.</p>
+                    <p>&copy; 2025 PhenomeBeauty. All rights reserved.</p>
                 </div>
-
             </div>
         </div>
     </footer>
