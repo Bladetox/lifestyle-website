@@ -367,7 +367,6 @@ section, footer, nav { position: relative; z-index: 1; }
     background: none;
 }
 
-/* Background image — replaces the old ./PhenomeBeauty url */
 .feature-card::before {
     content: "";
     position: absolute;
@@ -377,7 +376,6 @@ section, footer, nav { position: relative; z-index: 1; }
     transition: transform 0.5s ease;
 }
 
-/* Dark gradient overlay — heavier at the bottom where text sits */
 .feature-card::after {
     content: "";
     position: absolute;
@@ -391,7 +389,6 @@ section, footer, nav { position: relative; z-index: 1; }
     z-index: 1;
 }
 
-/* Subtle zoom on hover */
 .feature-card:hover::before {
     transform: scale(1.04);
 }
@@ -463,7 +460,7 @@ section, footer, nav { position: relative; z-index: 1; }
 }
 
 /* =========================
-   Promo Cards — fixed: no nested <a>
+   Promo Cards
 ========================= */
 .promo-section { padding: 10px 0; }
 
@@ -562,30 +559,67 @@ section, footer, nav { position: relative; z-index: 1; }
 }
 
 /* =========================
-   Services — categorised
+   Services — accordion
 ========================= */
 .services-section { padding: 10px 0; }
 
-.service-category {
-    margin-bottom: 36px;
+/* Accordion wrapper — replaces .service-category */
+.service-accordion {
+    margin-bottom: 12px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.04);
+    transition: border-color 0.22s ease;
 }
 
-.service-category:last-child { margin-bottom: 0; }
+.service-accordion:last-of-type { margin-bottom: 0; }
 
-.category-header {
+.service-accordion[open] {
+    border-color: rgba(255,255,255,0.18);
+}
+
+/* Summary row — the clickable header */
+.service-accordion > summary {
+    list-style: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    padding: 18px 22px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 16px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid rgba(255,255,255,0.10);
+    gap: 16px;
+    user-select: none;
+    transition: background 0.22s ease;
 }
 
-.category-header h3 {
+.service-accordion > summary::-webkit-details-marker { display: none; }
+
+.service-accordion > summary:hover {
+    background: rgba(255,255,255,0.04);
+}
+
+.summary-left { display: flex; flex-direction: column; gap: 4px; }
+
+.summary-left h3 {
     font-family: var(--font-display);
-    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
     color: var(--accent-strong);
     line-height: 1;
+    margin: 0;
+}
+
+.summary-left p {
+    color: var(--text-soft);
+    font-size: 0.86rem;
+    margin: 0;
+}
+
+.summary-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
 }
 
 .category-cta {
@@ -606,6 +640,37 @@ section, footer, nav { position: relative; z-index: 1; }
 .category-cta:hover {
     background: rgba(255,255,255,0.12);
     color: var(--accent-strong);
+}
+
+/* Chevron icon — rotates when open */
+.accordion-chevron {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.22s ease, transform 0.3s ease;
+}
+
+.accordion-chevron svg {
+    transition: transform 0.3s ease;
+}
+
+.service-accordion[open] .accordion-chevron svg {
+    transform: rotate(180deg);
+}
+
+.service-accordion[open] .accordion-chevron {
+    background: rgba(255,255,255,0.12);
+}
+
+/* Grid inside each accordion */
+.accordion-body {
+    padding: 0 18px 18px;
 }
 
 .services-grid {
@@ -741,22 +806,18 @@ section, footer, nav { position: relative; z-index: 1; }
     display: flex;
     flex-direction: column;
     gap: 18px;
-    /* Remove the old flat background — image handles it */
     background: none;
 }
 
-/* Background image layer */
 .booking-info::before {
     content: "";
     position: absolute;
     inset: 0;
-    background:
-        url("https://iili.io/fpLVF9e.png") center center / cover no-repeat;
+    background: url("https://iili.io/fpLVF9e.png") center center / cover no-repeat;
     z-index: 0;
     transition: transform 0.5s ease;
 }
 
-/* Dark overlay so text stays legible */
 .booking-info::after {
     content: "";
     position: absolute;
@@ -770,12 +831,10 @@ section, footer, nav { position: relative; z-index: 1; }
     z-index: 1;
 }
 
-/* Subtle zoom on hover */
 .booking-info:hover::before {
     transform: scale(1.03);
 }
 
-/* Push all content above the overlays */
 .booking-info > * {
     position: relative;
     z-index: 2;
@@ -1072,7 +1131,10 @@ section, footer, nav { position: relative; z-index: 1; }
 
     .service-card { border-radius: 14px; padding: 16px; }
 
-    .category-header { flex-wrap: wrap; gap: 10px; }
+    .service-accordion > summary { padding: 14px 16px; }
+    .accordion-body { padding: 0 14px 14px; }
+    .summary-left h3 { font-size: 1.2rem; }
+    .summary-right .category-cta { display: none; }
 
     .booking-info { border-radius: 18px; }
     .booking-info h3 { font-size: clamp(1.6rem, 8vw, 2.2rem); }
