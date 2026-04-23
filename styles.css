@@ -527,7 +527,8 @@ section, footer, nav { position: relative; z-index: 1; }
     border: 1px solid rgba(255,255,255,0.18);
     color: var(--accent-strong);
     font-size: 0.7rem;
-    letter-spacing: 0.1em;
+    font-weight: 700;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
 }
 
@@ -563,7 +564,6 @@ section, footer, nav { position: relative; z-index: 1; }
 ========================= */
 .services-section { padding: 10px 0; }
 
-/* Accordion wrapper — replaces .service-category */
 .service-accordion {
     margin-bottom: 12px;
     border-radius: 20px;
@@ -579,7 +579,6 @@ section, footer, nav { position: relative; z-index: 1; }
     border-color: rgba(255,255,255,0.18);
 }
 
-/* Summary row — the clickable header */
 .service-accordion > summary {
     list-style: none;
     -webkit-appearance: none;
@@ -642,7 +641,6 @@ section, footer, nav { position: relative; z-index: 1; }
     color: var(--accent-strong);
 }
 
-/* Chevron icon — rotates when open */
 .accordion-chevron {
     width: 32px;
     height: 32px;
@@ -668,7 +666,6 @@ section, footer, nav { position: relative; z-index: 1; }
     background: rgba(255,255,255,0.12);
 }
 
-/* Grid inside each accordion */
 .accordion-body {
     padding: 0 18px 18px;
 }
