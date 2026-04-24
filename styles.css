@@ -1152,8 +1152,30 @@ section, footer, nav { position: relative; z-index: 1; }
     .mobile-menu-toggle { display: inline-flex; }
     .nav-cta { display: none; }
 
-    /* Hide wordmark on mobile to save space */
-    .logo-wordmark { display: none; }
+    /* On mobile: logo-wrap left, wordmark absolutely centred, hamburger right */
+    .navbar-inner {
+        position: relative;
+    }
+
+    .logo-wrap {
+        /* keep logo anchored left, don't stretch */
+        flex: 0 0 auto;
+        z-index: 1;
+    }
+
+    .logo-wordmark {
+        /* pull wordmark out of flow and centre it perfectly */
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.05rem;
+        pointer-events: none;
+    }
+
+    .mobile-menu-toggle {
+        flex: 0 0 auto;
+        z-index: 1;
+    }
 
     .nav-menu {
         position: absolute;
@@ -1208,6 +1230,7 @@ section, footer, nav { position: relative; z-index: 1; }
     .container { width: calc(100% - 16px); }
     .navbar-inner { padding: 7px 9px; }
     .logo-img { height: 32px; }
+    .logo-wordmark { font-size: 0.95rem; }
 
     .section { padding: 7px 0; }
     .hero { padding: 10px 0 7px; }
