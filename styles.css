@@ -1158,13 +1158,11 @@ section, footer, nav { position: relative; z-index: 1; }
     }
 
     .logo-wrap {
-        /* keep logo anchored left, don't stretch */
         flex: 0 0 auto;
         z-index: 1;
     }
 
     .logo-wordmark {
-        /* pull wordmark out of flow and centre it perfectly */
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
@@ -1211,6 +1209,8 @@ section, footer, nav { position: relative; z-index: 1; }
         justify-content: flex-start;
         padding: 13px 14px;
         border-radius: 14px;
+        font-weight: 600;
+        font-size: 0.95rem;
     }
 
     .booking-content { grid-template-columns: 1fr; }
