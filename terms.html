@@ -27,12 +27,22 @@
             align-items: center;
             gap: 14px;
         }
-        .tcs-icon {
-            width: 72px;
-            height: 72px;
-            object-fit: contain;
-            border-radius: 18px;
+        .tcs-icon-wrap {
+            width: 88px;
+            height: 88px;
+            border-radius: 22px;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+            flex-shrink: 0;
             margin-bottom: 4px;
+        }
+        .tcs-icon {
+            width: 54px;
+            height: 54px;
+            object-fit: contain;
         }
         .tcs-hero-panel h1 {
             font-family: var(--font-display);
@@ -160,7 +170,9 @@
     <section class="tcs-hero">
         <div class="container">
             <div class="tcs-hero-panel">
-                <img src="https://iili.io/B4pJpna.png" alt="T&Cs" class="tcs-icon" />
+                <div class="tcs-icon-wrap">
+                    <img src="https://iili.io/B4pJpna.png" alt="T&Cs" class="tcs-icon" />
+                </div>
                 <h1>Terms &amp; Conditions</h1>
                 <p>Please read these terms carefully before booking. By using our services you agree to the policy outlined below.</p>
             </div>
@@ -244,6 +256,7 @@
                             <li><a href="index.html#guides">Guides</a></li>
                             <li><a href="index.html#services">Services</a></li>
                             <li><a href="index.html#booking">Book Now</a></li>
+                            <li><a href="terms.html">T&amp;Cs</a></li>
                         </ul>
                     </div>
                     <div class="footer-section">
