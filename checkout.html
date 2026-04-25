@@ -92,6 +92,39 @@
     .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 120px; gap: 14px; }
     .field-divider { height: 1px; background: var(--glass-border); margin: 20px 0; }
 
+    /* ─ Places autocomplete hint ─────────────────── */
+    .places-hint {
+      font-size: 0.72rem; color: var(--text-muted);
+      display: flex; align-items: center; gap: 5px;
+      margin-top: 3px;
+    }
+    .places-hint svg { flex-shrink: 0; }
+    /* Style the Google Places dropdown to match dark theme */
+    .pac-container {
+      background: #1a1a1e !important;
+      border: 1px solid rgba(255,255,255,0.12) !important;
+      border-radius: 10px !important;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.6) !important;
+      margin-top: 4px !important;
+      font-family: var(--font-body, 'Inter', sans-serif) !important;
+      overflow: hidden;
+    }
+    .pac-item {
+      padding: 10px 14px !important;
+      border-top: 1px solid rgba(255,255,255,0.06) !important;
+      color: rgba(255,255,255,0.75) !important;
+      font-size: 0.85rem !important;
+      cursor: pointer !important;
+      transition: background 0.15s !important;
+    }
+    .pac-item:first-child { border-top: none !important; }
+    .pac-item:hover, .pac-item-selected { background: rgba(255,255,255,0.07) !important; }
+    .pac-item-query { color: #fff !important; font-weight: 600 !important; }
+    .pac-matched { color: #fff !important; font-weight: 700 !important; }
+    .pac-icon { display: none !important; }
+    .pac-logo::after { display: none !important; }
+    .hdpi.pac-logo::after { display: none !important; }
+
     /* ─ Buttons ──────────────────────────────────── */
     .co-btn-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 26px; flex-wrap: wrap; }
     .co-back-link {
@@ -462,27 +495,40 @@
             </div>
           </div>
           <div class="co-alert" id="alert-2"></div>
+
+          <!-- Street address with Places Autocomplete -->
           <div class="field-group">
             <label class="field-label">Street Address</label>
-            <input class="field-input" id="f-street" type="text" placeholder="12 Main Road" autocomplete="address-line1" />
+            <input
+              class="field-input"
+              id="f-street"
+              type="text"
+              placeholder="Start typing your address…"
+              autocomplete="off"
+            />
+            <span class="places-hint" id="placesHint">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#34d399"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span style="color:#34d399">Start typing</span>&nbsp;&mdash; we'll fill in suburb, city &amp; postal code for you
+            </span>
             <span class="field-error" id="err-street">Please enter your street address.</span>
           </div>
+
           <div class="form-row">
             <div class="field-group">
               <label class="field-label">Suburb</label>
-              <input class="field-input" id="f-suburb" type="text" placeholder="Sea Point" autocomplete="address-level2" />
+              <input class="field-input" id="f-suburb" type="text" placeholder="Sea Point" autocomplete="off" />
               <span class="field-error" id="err-suburb">Required.</span>
             </div>
             <div class="field-group">
               <label class="field-label">City</label>
-              <input class="field-input" id="f-city" type="text" placeholder="Cape Town" autocomplete="address-level1" value="Cape Town" />
+              <input class="field-input" id="f-city" type="text" placeholder="Cape Town" autocomplete="off" value="Cape Town" />
               <span class="field-error" id="err-city">Required.</span>
             </div>
           </div>
           <div class="form-row">
             <div class="field-group">
               <label class="field-label">Postal Code</label>
-              <input class="field-input" id="f-postal" type="text" placeholder="8001" autocomplete="postal-code" maxlength="4" />
+              <input class="field-input" id="f-postal" type="text" placeholder="8001" autocomplete="off" maxlength="4" />
               <span class="field-error" id="err-postal">Required.</span>
             </div>
             <div class="field-group">
@@ -796,6 +842,79 @@
       setTimeout(() => nudge.classList.remove('show'), 260);
     }
 
+    /* ═ Google Places Autocomplete ══════════════ */
+    function initPlaces() {
+      const streetInput = document.getElementById('f-street');
+      if (!streetInput || !window.google) return;
+
+      const ac = new google.maps.places.Autocomplete(streetInput, {
+        componentRestrictions: { country: 'za' },
+        fields: ['address_components'],
+        types: ['address']
+      });
+
+      // Prevent the form submitting on Enter inside the dropdown
+      streetInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') e.preventDefault();
+      });
+
+      ac.addListener('place_changed', function() {
+        const place = ac.getPlace();
+        const comps = place.address_components || [];
+
+        function get(type, prefer_short) {
+          const c = comps.find(c => c.types.includes(type));
+          return c ? (prefer_short ? c.short_name : c.long_name) : '';
+        }
+
+        // Build street: number + route
+        const streetNum  = get('street_number');
+        const route      = get('route');
+        streetInput.value = [streetNum, route].filter(Boolean).join(' ');
+
+        // Suburb: try sublocality first, then neighbourhood
+        const suburb =
+          get('sublocality_level_1') ||
+          get('sublocality') ||
+          get('neighborhood') ||
+          get('locality');
+        document.getElementById('f-suburb').value = suburb;
+
+        // City
+        document.getElementById('f-city').value =
+          get('locality') || get('administrative_area_level_2');
+
+        // Postal code
+        document.getElementById('f-postal').value = get('postal_code', true);
+
+        // Province — try to match to select option
+        const province = get('administrative_area_level_1');
+        const sel = document.getElementById('f-province');
+        const opt = [...sel.options].find(o =>
+          o.value.toLowerCase() === province.toLowerCase() ||
+          province.toLowerCase().includes(o.value.toLowerCase())
+        );
+        if (opt) sel.value = opt.value;
+
+        // Hide the hint once a selection is made
+        const hint = document.getElementById('placesHint');
+        if (hint) hint.style.display = 'none';
+
+        // Persist to draft so localStorage stays in sync
+        saveDraft();
+
+        // Clear any address field errors
+        ['f-street','f-suburb','f-city','f-postal'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.classList.remove('error');
+        });
+        ['err-street','err-suburb','err-city','err-postal'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.classList.remove('show');
+        });
+      });
+    }
+
     /* ═ Init ════════════════════════════════════ */
     (function init(){
       if(!cart.length){
@@ -1005,5 +1124,26 @@
       }
     })();
   </script>
+
+  <!--
+    ╔══════════════════════════════════════════════════════════╗
+    ║  Google Places Autocomplete                              ║
+    ║  ─────────────────────────────────────────────────────── ║
+    ║  ACTION REQUIRED: Replace YOUR_GOOGLE_PLACES_API_KEY     ║
+    ║  with your actual key from Google Cloud Console.         ║
+    ║                                                          ║
+    ║  Restrict the key to:                                    ║
+    ║    • HTTP referrers: phenomebeauty.co.za/*               ║
+    ║    • APIs: Places API                                    ║
+    ║                                                          ║
+    ║  Free tier: 28,500 requests/month — more than enough     ║
+    ║  for a small e-commerce store.                           ║
+    ╚══════════════════════════════════════════════════════════╝
+  -->
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_PLACES_API_KEY&libraries=places&callback=initPlaces&loading=async"
+    async defer>
+  </script>
+
 </body>
 </html>
