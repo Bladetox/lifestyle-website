@@ -316,16 +316,16 @@
     const SCENTS      = ['Balance','Calm','Bloom','Pure'];
     const WAX_COLOURS = ['Black','White','Pink'];
     const WAX_TYPES   = ['Gentle Touch','Everyday Smooth','Firm Hold','Pro Strength'];
-    const WAX_SIZES   = ['500g - R249','1kg - R365'];
+    const WAX_SIZES   = ['500g - R260','1kg - R380'];
 
-    const WAX_SIZE_PRICES = { '500g - R249': 249, '1kg - R365': 365 };
+    const WAX_SIZE_PRICES = { '500g - R260': 260, '1kg - R380': 380 };
 
     const PRODUCTS = [
-      { id:'smooth-ritual',     tag:'Body Scrub',         name:'Smooth Ritual',     desc:'A luxuriously gritty exfoliating scrub that melts away dead skin, leaving you silky-soft and glowing. 200ml.',      price:210, emoji:'\u2728', variantLabel:'Scent',       variants:SCENTS },
-      { id:'smooth-veil',       tag:'Body Cream',         name:'Smooth Veil',       desc:'A rich, fast-absorbing body cream that locks in moisture and leaves skin dewy-smooth all day. 200ml.',             price:249, emoji:'\ud83c\udf3f', variantLabel:'Scent',       variants:SCENTS },
-      { id:'smooth-ritual-kit', tag:'Bundle - Best Value',name:'Smooth Ritual Kit', desc:'The full glow experience: Smooth Ritual Scrub + Smooth Veil Cream. Pick a scent for each.',                     price:399, emoji:'\ud83d\udc9b', variantLabel:'Scrub Scent', variants:SCENTS, variant2Label:'Cream Scent', variants2:SCENTS },
-      { id:'wax-melting-pot',   tag:'Wax Equipment',      name:'Wax Melting Pot',   desc:'Professional-grade electric wax melting pot for smooth, even wax temperatures every session.',                    price:310, emoji:'\ud83d\udd6f\ufe0f', variantLabel:'Colour',      variants:WAX_COLOURS },
-      { id:'professional-wax',  tag:'Professional Wax',   name:'Professional Wax',  desc:'Premium depilatory wax for professional salon use - clean, smooth, and effective. Choose your type and size.', price:249, emoji:'\ud83e\udeae', variantLabel:'Type',        variants:WAX_TYPES, variant2Label:'Size', variants2:WAX_SIZES, dynamicPrice:WAX_SIZE_PRICES, dynamicPriceKey:'variant2' },
+      { id:'smooth-ritual',     tag:'Body Scrub',         name:'Smooth Ritual',     desc:'A luxuriously gritty exfoliating scrub that melts away dead skin, leaving you silky-soft and glowing. 200ml.',      price:220, emoji:'\u2728', variantLabel:'Scent',       variants:SCENTS },
+      { id:'smooth-veil',       tag:'Body Cream',         name:'Smooth Veil',       desc:'A rich, fast-absorbing body cream that locks in moisture and leaves skin dewy-smooth all day. 200ml.',             price:260, emoji:'\ud83c\udf3f', variantLabel:'Scent',       variants:SCENTS },
+      { id:'smooth-ritual-kit', tag:'Bundle - Best Value',name:'Smooth Ritual Kit', desc:'The full glow experience: Smooth Ritual Scrub + Smooth Veil Cream. Pick a scent for each.',                     price:420, emoji:'\ud83d\udc9b', variantLabel:'Scrub Scent', variants:SCENTS, variant2Label:'Cream Scent', variants2:SCENTS },
+      { id:'wax-melting-pot',   tag:'Wax Equipment',      name:'Wax Melting Pot',   desc:'Professional-grade electric wax melting pot for smooth, even wax temperatures every session.',                    price:320, emoji:'\ud83d\udd6f\ufe0f', variantLabel:'Colour',      variants:WAX_COLOURS },
+      { id:'professional-wax',  tag:'Professional Wax',   name:'Professional Wax',  desc:'Premium depilatory wax for professional salon use - clean, smooth, and effective. Choose your type and size.', price:260, emoji:'\ud83e\udeae', variantLabel:'Type',        variants:WAX_TYPES, variant2Label:'Size', variants2:WAX_SIZES, dynamicPrice:WAX_SIZE_PRICES, dynamicPriceKey:'variant2' },
     ];
 
     let cart = JSON.parse(localStorage.getItem('phenome_cart') || '[]');
