@@ -102,6 +102,28 @@
     }
     .co-back-link:hover { color: var(--text); }
 
+    /* ─ Step 1 payment trust micro-strip ─────────── */
+    .step1-trust {
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      margin-top: 22px; padding-top: 20px;
+      border-top: 1px solid var(--glass-border);
+    }
+    .step1-trust-strip {
+      display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+      flex-wrap: wrap; background: #ffffff; border-radius: var(--radius-md);
+      padding: 10px 20px; box-shadow: 0 1px 6px rgba(0,0,0,0.35);
+    }
+    .step1-trust-strip img { height: 20px; width: auto; display: block; }
+    .step1-trust-strip .strip-div { width: 1px; height: 18px; background: rgba(0,0,0,0.12); flex-shrink: 0; }
+    .step1-trust-strip .pci-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 0.62rem; font-weight: 800; letter-spacing: 0.08em;
+      color: rgba(0,0,0,0.45); white-space: nowrap;
+    }
+    .step1-trust-caption {
+      font-size: 0.69rem; color: var(--text-muted); text-align: center; line-height: 1.5;
+    }
+
     /* ─ Delivery date banner ─────────────────────── */
     .delivery-banner {
       display: flex; align-items: center; gap: 10px;
@@ -162,7 +184,7 @@
     .review-block-body { padding: 16px 18px; font-size: 0.88rem; color: var(--text-soft); line-height: 1.7; }
     .review-block-body strong { color: var(--text); }
 
-    /* ─ Payment trust strip ──────────────────────── */
+    /* ─ Payment trust strip (Step 3) ─────────────── */
     .pay-trust-wrap {
       margin-top: 20px; padding: 18px 0 10px;
       border-top: 1px solid var(--glass-border);
@@ -299,6 +321,8 @@
       .co-sep { width: 16px; }
       .pay-trust-strip { padding: 10px 16px; gap: 10px; }
       .pay-trust-strip img.yoco-strip { height: 18px; }
+      .step1-trust-strip { padding: 8px 14px; gap: 8px; }
+      .step1-trust-strip img { height: 17px; }
     }
   </style>
 </head>
@@ -397,6 +421,27 @@
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </button>
           </div>
+
+          <!-- ══ STEP 1 PAYMENT TRUST STRIP ══ -->
+          <div class="step1-trust">
+            <div class="step1-trust-strip">
+              <img
+                src="https://assets.yoco.com/f/111633/313x19/cbe08e96e2/payment-strip-dark.svg"
+                alt="Visa, Mastercard, Amex, Diners accepted via Yoco"
+                loading="lazy" width="250" height="16"
+              />
+              <span class="strip-div" aria-hidden="true"></span>
+              <span class="pci-badge">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:rgba(0,0,0,0.4)"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                PCI DSS
+              </span>
+            </div>
+            <div class="step1-trust-caption">
+              All cards accepted &bull; Encrypted &amp; processed securely by Yoco
+            </div>
+          </div>
+          <!-- end step 1 trust strip -->
+
         </div>
 
         <!-- ══ STEP 2 ══ -->
@@ -734,9 +779,9 @@
     let nudgeDismissed = false;
     function initExitIntent() {
       document.documentElement.addEventListener('mouseleave', function onMouseLeave(e) {
-        if (e.clientY > 10) return;                  // only top-of-viewport exit
-        if (currentStep !== 3) return;               // only on Step 3
-        if (nudgeFired || nudgeDismissed) return;    // fire once per session
+        if (e.clientY > 10) return;
+        if (currentStep !== 3) return;
+        if (nudgeFired || nudgeDismissed) return;
         nudgeFired = true;
         const nudge = document.getElementById('exitNudge');
         nudge.classList.add('show');
