@@ -11,131 +11,89 @@
   <link href="https://fonts.cdnfonts.com/css/glacial-indifference-2" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <style>
-    body {
-      background: #0a0a0b;
-      min-height: 100vh;
-    }
+    body { background: #0a0a0b; min-height: 100vh; }
 
-    /* ── Checkout nav ──────────────────────────────── */
+    /* ─ Nav ─────────────────────────────────────── */
     .co-nav {
       position: sticky; top: 0; z-index: 200;
       border-bottom: 1px solid var(--glass-border);
       background: rgba(8,8,10,0.92);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
     }
-    .co-nav-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 0;
-    }
-    .co-nav-logo {
-      display: flex; align-items: center; gap: 10px;
-      font-family: var(--font-display); font-size: 1.1rem; color: #fff;
-    }
+    .co-nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .co-nav-logo  { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 1.1rem; color: #fff; }
     .co-nav-logo img { height: 34px; border-radius: 6px; }
-    .co-nav-back {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 0.82rem; color: var(--text-muted); transition: color 0.2s;
-    }
+    .co-nav-back  { display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--text-muted); transition: color 0.2s; }
     .co-nav-back:hover { color: var(--text); }
-    .co-trust {
-      display: flex; align-items: center; gap: 6px;
-      font-size: 0.78rem; color: var(--text-muted);
-    }
+    .co-trust     { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--text-muted); }
 
-    /* ── Layout ────────────────────────────────────── */
+    /* ─ Layout ───────────────────────────────────── */
     .co-layout {
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 0;
-      min-height: calc(100vh - 64px);
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 0 20px;
+      display: grid; grid-template-columns: 1fr 420px; gap: 0;
+      min-height: calc(100vh - 64px); max-width: 1140px; margin: 0 auto; padding: 0 20px;
     }
-    .co-form-col {
-      padding: 40px 48px 60px 0;
-      border-right: 1px solid var(--glass-border);
-    }
+    .co-form-col { padding: 40px 48px 60px 0; border-right: 1px solid var(--glass-border); }
 
-    /* ── Breadcrumb ────────────────────────────────── */
-    .co-steps {
-      display: flex; align-items: center; gap: 0;
-      margin-bottom: 36px; font-size: 0.8rem;
-    }
-    .co-step { display: flex; align-items: center; gap: 6px; color: var(--text-muted); font-weight: 500; }
+    /* ─ Breadcrumb ───────────────────────────────── */
+    .co-steps { display: flex; align-items: center; gap: 0; margin-bottom: 36px; font-size: 0.8rem; }
+    .co-step  { display: flex; align-items: center; gap: 6px; color: var(--text-muted); font-weight: 500; }
     .co-step.active { color: var(--accent-strong); }
     .co-step.done   { color: var(--text-soft); }
     .co-step-num {
-      width: 22px; height: 22px; border-radius: 50%;
-      border: 1px solid currentColor;
+      width: 22px; height: 22px; border-radius: 50%; border: 1px solid currentColor;
       display: flex; align-items: center; justify-content: center;
       font-size: 0.68rem; font-weight: 700; flex-shrink: 0;
     }
-    .co-step.done .co-step-num { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.20); }
+    .co-step.done .co-step-num   { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.20); }
     .co-step.active .co-step-num { background: #fff; color: #000; border-color: #fff; }
     .co-sep { width: 28px; height: 1px; background: var(--glass-border); margin: 0 8px; }
 
-    /* ── Section heads ─────────────────────────────── */
+    /* ─ Section heads ────────────────────────────── */
     .co-section-head { margin-bottom: 22px; }
-    .co-section-head h2 {
-      font-family: var(--font-display); font-size: 1.5rem;
-      color: var(--accent-strong); line-height: 1.1; margin-bottom: 4px;
-    }
-    .co-section-head p { font-size: 0.83rem; color: var(--text-muted); }
+    .co-section-head h2 { font-family: var(--font-display); font-size: 1.5rem; color: var(--accent-strong); line-height: 1.1; margin-bottom: 4px; }
+    .co-section-head p  { font-size: 0.83rem; color: var(--text-muted); }
 
-    /* ── Step panels ───────────────────────────────── */
-    .co-step-panel { display: none; }
+    /* ─ Step panels ──────────────────────────────── */
+    .co-step-panel        { display: none; }
     .co-step-panel.active { display: block; }
 
-    /* ── Done cards ────────────────────────────────── */
+    /* ─ Done cards ───────────────────────────────── */
     .done-card {
       display: flex; align-items: center; justify-content: space-between;
       padding: 14px 16px; border-radius: var(--radius-md);
-      border: 1px solid var(--glass-border);
-      background: rgba(255,255,255,0.04); margin-bottom: 10px; gap: 12px;
+      border: 1px solid var(--glass-border); background: rgba(255,255,255,0.04);
+      margin-bottom: 10px; gap: 12px;
     }
     .done-card-left { font-size: 0.82rem; color: var(--text-muted); }
     .done-card-val  { font-size: 0.88rem; color: var(--text); font-weight: 500; margin-top: 2px; }
     .done-card-edit {
-      font-size: 0.78rem; color: var(--accent);
-      background: none; border: none; cursor: pointer;
-      font-family: var(--font-body); text-decoration: underline;
+      font-size: 0.78rem; color: var(--accent); background: none; border: none;
+      cursor: pointer; font-family: var(--font-body); text-decoration: underline;
       transition: color 0.18s; flex-shrink: 0;
     }
     .done-card-edit:hover { color: var(--accent-strong); }
 
-    /* ── Fields ────────────────────────────────────── */
+    /* ─ Fields ───────────────────────────────────── */
     .field-group { display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px; }
     .field-group:last-of-type { margin-bottom: 0; }
-    .field-label {
-      font-size: 0.72rem; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--text-muted); display: block;
-    }
+    .field-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); display: block; }
     .field-input {
-      width: 100%;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid var(--glass-border);
-      color: var(--text); border-radius: var(--radius-md);
-      padding: 12px 16px; font-size: 0.9rem;
-      font-family: var(--font-body); outline: none;
+      width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);
+      color: var(--text); border-radius: var(--radius-md); padding: 12px 16px;
+      font-size: 0.9rem; font-family: var(--font-body); outline: none;
       transition: border-color 0.2s, background 0.2s;
     }
-    .field-input:focus { border-color: rgba(255,255,255,0.38); background: rgba(255,255,255,0.07); }
-    .field-input.error { border-color: #f87171; }
-    .field-error { font-size: 0.75rem; color: #f87171; display: none; }
-    .field-error.show { display: block; }
+    .field-input:focus  { border-color: rgba(255,255,255,0.38); background: rgba(255,255,255,0.07); }
+    .field-input.error  { border-color: #f87171; }
+    .field-error        { font-size: 0.75rem; color: #f87171; display: none; }
+    .field-error.show   { display: block; }
     textarea.field-input { resize: vertical; min-height: 76px; }
     .form-row   { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 120px; gap: 14px; }
     .field-divider { height: 1px; background: var(--glass-border); margin: 20px 0; }
 
-    /* ── Buttons ───────────────────────────────────── */
-    .co-btn-row {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 14px; margin-top: 26px; flex-wrap: wrap;
-    }
+    /* ─ Buttons ──────────────────────────────────── */
+    .co-btn-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 26px; flex-wrap: wrap; }
     .co-back-link {
       font-size: 0.82rem; color: var(--text-muted);
       display: inline-flex; align-items: center; gap: 5px;
@@ -144,51 +102,81 @@
     }
     .co-back-link:hover { color: var(--text); }
 
-    /* ── Review blocks ─────────────────────────────── */
-    .review-block {
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 16px;
+    /* ─ Delivery date banner (BUILD 2) ───────────────── */
+    .delivery-banner {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 16px; border-radius: var(--radius-md);
+      border: 1px solid rgba(52,211,153,0.22);
+      background: rgba(52,211,153,0.06);
+      margin-bottom: 22px;
     }
+    .delivery-banner svg { flex-shrink: 0; color: #34d399; }
+    .delivery-banner-text { font-size: 0.83rem; }
+    .delivery-banner-text strong { color: #34d399; font-weight: 600; }
+    .delivery-banner-text span   { color: var(--text-muted); }
+
+    /* ─ Review blocks ─────────────────────────────── */
+    .review-block { border: 1px solid var(--glass-border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 16px; }
     .review-block-head {
       padding: 12px 18px; background: rgba(255,255,255,0.04);
       border-bottom: 1px solid var(--glass-border);
-      font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-muted);
       display: flex; justify-content: space-between; align-items: center;
     }
-    .review-block-body {
-      padding: 16px 18px; font-size: 0.88rem;
-      color: var(--text-soft); line-height: 1.7;
-    }
+    .review-block-body { padding: 16px 18px; font-size: 0.88rem; color: var(--text-soft); line-height: 1.7; }
     .review-block-body strong { color: var(--text); }
 
-    /* ── Secure note ───────────────────────────────── */
+    /* ─ Payment trust bar (BUILD 2) ─────────────────── */
+    .pay-trust-bar {
+      display: flex; align-items: center; justify-content: center;
+      gap: 10px; flex-wrap: wrap;
+      padding: 14px 0 6px;
+      border-top: 1px solid var(--glass-border);
+      margin-top: 18px;
+    }
+    .pay-trust-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 5px 10px; border-radius: 6px;
+      border: 1px solid var(--glass-border);
+      background: rgba(255,255,255,0.04);
+      font-size: 0.72rem; font-weight: 700;
+      color: var(--text-soft); letter-spacing: 0.04em;
+    }
+    /* Visa blue */
+    .pay-trust-badge.visa   { color: #1a1f71; background: #fff; border-color: rgba(255,255,255,0.2); }
+    /* MC red+orange */
+    .pay-trust-badge.mc     { background: #fff; border-color: rgba(255,255,255,0.2); }
+    /* Yoco teal */
+    .pay-trust-badge.yoco   { color: #00c4a0; border-color: rgba(0,196,160,0.3); background: rgba(0,196,160,0.06); }
+    /* PCI */
+    .pay-trust-badge.pci    { color: var(--text-muted); }
+    .pay-trust-bar-label {
+      width: 100%; text-align: center;
+      font-size: 0.7rem; color: var(--text-muted); margin-top: 2px;
+    }
+
+    /* ─ Secure note ──────────────────────────────── */
     .co-secure {
       display: flex; align-items: center; justify-content: center;
       gap: 7px; font-size: 0.75rem; color: var(--text-muted); margin-top: 14px;
     }
 
-    /* ── Right summary col ─────────────────────────── */
+    /* ─ Right summary col ─────────────────────────── */
     .co-summary-col {
       padding: 40px 0 60px 40px;
-      position: sticky; top: 64px;
-      align-self: start;
+      position: sticky; top: 64px; align-self: start;
       max-height: calc(100vh - 64px); overflow-y: auto;
     }
-    .co-summary-title {
-      font-family: var(--font-display); font-size: 1.1rem;
-      color: var(--accent-strong); margin-bottom: 20px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .co-items { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
-    .co-item  { display: flex; align-items: flex-start; gap: 12px; }
+    .co-summary-title { font-family: var(--font-display); font-size: 1.1rem; color: var(--accent-strong); margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; }
+    .co-items  { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+    .co-item   { display: flex; align-items: flex-start; gap: 12px; }
     .co-item-img {
       width: 56px; height: 56px; border-radius: 10px;
-      border: 1px solid var(--glass-border);
-      overflow: hidden; flex-shrink: 0;
+      border: 1px solid var(--glass-border); overflow: hidden; flex-shrink: 0;
       background: rgba(255,255,255,0.04); position: relative;
     }
-    .co-item-img img { width: 100%; height: 100%; object-fit: cover; }
+    .co-item-img img       { width: 100%; height: 100%; object-fit: cover; }
     .co-item-qty-badge {
       position: absolute; top: -6px; right: -6px;
       background: rgba(255,255,255,0.20); border: 1px solid var(--glass-border);
@@ -196,7 +184,7 @@
       font-size: 0.65rem; font-weight: 700;
       display: flex; align-items: center; justify-content: center; color: #fff;
     }
-    .co-item-info { flex: 1; }
+    .co-item-info  { flex: 1; }
     .co-item-name  { font-size: 0.88rem; font-weight: 600; color: var(--accent-strong); line-height: 1.2; }
     .co-item-var   { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
     .co-item-price { font-size: 0.9rem; font-weight: 700; color: var(--accent); white-space: nowrap; }
@@ -206,75 +194,47 @@
     .co-total-row span:last-child { color: var(--text); }
     .co-total-row.grand { font-size: 1.05rem; font-weight: 700; }
     .co-total-row.grand span:last-child { color: var(--accent); }
+    /* Delivery date row in right summary */
+    .co-total-row.delivery-date span { color: #34d399 !important; font-size: 0.78rem; }
+    .co-total-row.delivery-date span:first-child { color: var(--text-muted) !important; font-size: 0.78rem; }
 
-    /* ── Mobile summary bar ────────────────────────── */
-    .co-mobile-summary {
-      display: none;
-      border-bottom: 1px solid var(--glass-border);
-      background: rgba(8,8,10,0.95); padding: 14px 20px;
-    }
-    .co-mobile-summary-toggle {
-      display: flex; align-items: center; justify-content: space-between;
-      cursor: pointer; user-select: none;
-    }
-    .co-mobile-summary-toggle span:first-child {
-      font-size: 0.85rem; color: var(--accent);
-      display: flex; align-items: center; gap: 6px;
-    }
+    /* ─ Mobile summary bar ────────────────────────── */
+    .co-mobile-summary { display: none; border-bottom: 1px solid var(--glass-border); background: rgba(8,8,10,0.95); padding: 14px 20px; }
+    .co-mobile-summary-toggle { display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none; }
+    .co-mobile-summary-toggle span:first-child { font-size: 0.85rem; color: var(--accent); display: flex; align-items: center; gap: 6px; }
     .co-mobile-summary-toggle .ms-total { font-size: 0.95rem; font-weight: 700; color: var(--accent); }
-    .co-mobile-summary-body { display: none; padding-top: 14px; }
+    .co-mobile-summary-body      { display: none; padding-top: 14px; }
     .co-mobile-summary-body.open { display: block; }
 
-    /* ── Alerts ────────────────────────────────────── */
-    .co-alert {
-      padding: 12px 16px; border-radius: var(--radius-md);
-      background: rgba(248,113,113,0.08); border: 1px solid rgba(248,113,113,0.22);
-      color: #f87171; font-size: 0.83rem; margin-bottom: 18px; display: none;
-    }
+    /* ─ Alerts ───────────────────────────────────── */
+    .co-alert { padding: 12px 16px; border-radius: var(--radius-md); background: rgba(248,113,113,0.08); border: 1px solid rgba(248,113,113,0.22); color: #f87171; font-size: 0.83rem; margin-bottom: 18px; display: none; }
     .co-alert.show { display: block; }
 
-    /* ── Draft restored toast ──────────────────────── */
+    /* ─ Toast ────────────────────────────────────── */
     .co-toast {
       position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px);
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.18);
-      backdrop-filter: blur(16px);
-      color: var(--text); font-size: 0.82rem;
+      background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(16px); color: var(--text); font-size: 0.82rem;
       padding: 10px 20px; border-radius: var(--radius-pill);
       display: flex; align-items: center; gap: 8px;
-      z-index: 800; opacity: 0;
-      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 800; opacity: 0; transition: opacity 0.3s ease, transform 0.3s ease;
       pointer-events: none; white-space: nowrap;
     }
     .co-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-    /* ── Loading overlay ───────────────────────────── */
-    .co-loading {
-      position: fixed; inset: 0; z-index: 900;
-      background: rgba(4,4,6,0.88); backdrop-filter: blur(8px);
-      display: none; flex-direction: column;
-      align-items: center; justify-content: center; gap: 20px;
-    }
+    /* ─ Loading ──────────────────────────────────── */
+    .co-loading { position: fixed; inset: 0; z-index: 900; background: rgba(4,4,6,0.88); backdrop-filter: blur(8px); display: none; flex-direction: column; align-items: center; justify-content: center; gap: 20px; }
     .co-loading.show { display: flex; }
-    .co-spinner {
-      width: 48px; height: 48px;
-      border: 3px solid rgba(255,255,255,0.1);
-      border-top-color: #fff; border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
+    .co-spinner { width: 48px; height: 48px; border: 3px solid rgba(255,255,255,0.1); border-top-color: #fff; border-radius: 50%; animation: spin 0.8s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
     .co-loading p { color: var(--text-soft); font-size: 0.9rem; }
 
-    /* ── Empty state ───────────────────────────────── */
-    .co-empty {
-      min-height: 60vh; display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 16px; text-align: center; padding: 40px;
-    }
+    /* ─ Empty ────────────────────────────────────── */
+    .co-empty { min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; text-align: center; padding: 40px; }
     .co-empty h2 { font-family: var(--font-display); font-size: 2rem; color: var(--accent-strong); }
     .co-empty p  { color: var(--text-muted); font-size: 0.9rem; }
 
-    /* ── Responsive ────────────────────────────────── */
+    /* ─ Responsive ───────────────────────────────── */
     @media (max-width: 900px) {
       .co-layout { grid-template-columns: 1fr; padding: 0 16px; }
       .co-form-col { padding: 24px 0 40px; border-right: none; }
@@ -282,16 +242,17 @@
       .co-mobile-summary { display: block; }
     }
     @media (max-width: 600px) {
-      .form-row   { grid-template-columns: 1fr; gap: 0; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
       .form-row-3 { grid-template-columns: 1fr; gap: 0; }
-      .co-steps   { font-size: 0.72rem; }
-      .co-sep     { width: 16px; }
+      .co-steps { font-size: 0.72rem; }
+      .co-sep { width: 16px; }
+      .pay-trust-bar { gap: 6px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── Checkout Navbar ──────────────────────────── -->
+  <!-- Nav -->
   <nav class="co-nav">
     <div class="container">
       <div class="co-nav-inner">
@@ -311,7 +272,7 @@
     </div>
   </nav>
 
-  <!-- ── Mobile Summary Bar ───────────────────────── -->
+  <!-- Mobile Summary Bar -->
   <div class="co-mobile-summary" id="mobileSummary">
     <div class="co-mobile-summary-toggle" onclick="toggleMobileSummary()">
       <span>
@@ -329,10 +290,8 @@
     </div>
   </div>
 
-  <!-- ── Main layout ──────────────────────────────── -->
+  <!-- Main layout -->
   <div class="co-layout" id="coLayout">
-
-    <!-- LEFT: Form steps -->
     <div class="co-form-col">
 
       <div class="co-empty" id="emptyState" style="display:none">
@@ -352,7 +311,7 @@
           <div class="co-step" id="breadcrumb-3"><span class="co-step-num">3</span> Review</div>
         </div>
 
-        <!-- ══ STEP 1: Contact ══ -->
+        <!-- ══ STEP 1 ══ -->
         <div class="co-step-panel active" id="panel-1">
           <div class="co-section-head">
             <h2>Contact</h2>
@@ -388,7 +347,7 @@
           </div>
         </div>
 
-        <!-- ══ STEP 2: Delivery ══ -->
+        <!-- ══ STEP 2 ══ -->
         <div class="co-step-panel" id="panel-2">
           <div class="done-card">
             <div class="done-card-left">Contact<div class="done-card-val" id="done-contact-val"></div></div>
@@ -398,6 +357,16 @@
             <h2>Delivery</h2>
             <p>We deliver across Cape Town. Standard delivery is R80.</p>
           </div>
+
+          <!-- BUILD 2: Delivery date banner on Step 2 -->
+          <div class="delivery-banner" id="deliveryBanner2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            <div class="delivery-banner-text">
+              <strong id="deliveryDateText2">Est. delivery: Mon 28 Apr – Wed 30 Apr</strong>
+              <span> &mdash; Standard delivery, Cape Town</span>
+            </div>
+          </div>
+
           <div class="co-alert" id="alert-2"></div>
           <div class="field-group">
             <label class="field-label">Street Address</label>
@@ -454,7 +423,7 @@
           </div>
         </div>
 
-        <!-- ══ STEP 3: Review & Pay ══ -->
+        <!-- ══ STEP 3 ══ -->
         <div class="co-step-panel" id="panel-3">
           <div class="done-card">
             <div class="done-card-left">Contact<div class="done-card-val" id="done-contact-val-2"></div></div>
@@ -469,6 +438,7 @@
             <p>Check your order below, then click Pay to be taken to the secure Yoco payment page.</p>
           </div>
           <div class="co-alert" id="alert-3"></div>
+
           <div class="review-block">
             <div class="review-block-head">
               <span>Order Items</span>
@@ -476,6 +446,7 @@
             </div>
             <div class="review-block-body" id="reviewItems"></div>
           </div>
+
           <div class="review-block">
             <div class="review-block-head">Totals</div>
             <div class="review-block-body">
@@ -486,6 +457,14 @@
                 <div style="display:flex;justify-content:space-between;font-size:0.88rem">
                   <span style="color:var(--text-muted)">Delivery (Cape Town)</span><span id="rv-delivery">R80</span>
                 </div>
+                <!-- BUILD 2: Delivery date row in totals -->
+                <div style="display:flex;justify-content:space-between;font-size:0.8rem;padding-top:2px">
+                  <span style="color:var(--text-muted)">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:3px"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                    Est. delivery
+                  </span>
+                  <span style="color:#34d399;font-weight:600" id="rv-delivery-date">–</span>
+                </div>
                 <div style="height:1px;background:var(--glass-border)"></div>
                 <div style="display:flex;justify-content:space-between;font-size:1.05rem;font-weight:700">
                   <span>Total</span>
@@ -494,7 +473,37 @@
               </div>
             </div>
           </div>
-          <div class="co-btn-row">
+
+          <!-- BUILD 2: Payment trust logos -->
+          <div class="pay-trust-bar">
+            <!-- Visa -->
+            <span class="pay-trust-badge visa">
+              <svg width="32" height="11" viewBox="0 0 60 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="0" y="16" font-family="Arial,sans-serif" font-size="18" font-weight="900" fill="#1a1f71">VISA</text>
+              </svg>
+            </span>
+            <!-- Mastercard -->
+            <span class="pay-trust-badge mc">
+              <svg width="30" height="19" viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="14" cy="12" r="10" fill="#EB001B"/>
+                <circle cx="24" cy="12" r="10" fill="#F79E1B"/>
+                <path d="M19 5.27a10 10 0 010 13.46A10 10 0 0119 5.27z" fill="#FF5F00"/>
+              </svg>
+            </span>
+            <!-- Yoco -->
+            <span class="pay-trust-badge yoco">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Yoco
+            </span>
+            <!-- PCI -->
+            <span class="pay-trust-badge pci">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:2px"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              PCI Secured
+            </span>
+            <div class="pay-trust-bar-label">Your payment is encrypted and processed securely by Yoco</div>
+          </div>
+
+          <div class="co-btn-row" style="margin-top:14px">
             <button class="co-back-link" onclick="goStep(2)">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
               Back to Delivery
@@ -520,10 +529,9 @@
       <div class="co-divider"></div>
       <div class="co-totals" id="summaryTotals"></div>
     </div>
-
   </div><!-- /co-layout -->
 
-  <!-- Draft restored toast -->
+  <!-- Toast -->
   <div class="co-toast" id="coToast">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
     Details restored from your last visit
@@ -537,7 +545,7 @@
 
   <script src="script.js"></script>
   <script>
-    /* ── Config ───────────────────────────────────── */
+    /* ─ Config ──────────────────────────────────── */
     const SUPABASE_URL  = 'https://papdxjcfimeyjgzmatpl.supabase.co';
     const SUPABASE_ANON = 'sb_publishable_XXgqS4qa4-CJJQ7MYxt4Lw_sPbcmGPL';
     const DELIVERY_FEE  = 80;
@@ -552,69 +560,115 @@
       'professional-wax':  'https://iili.io/B6e8YKJ.jpg',
     };
 
-    /* ── State ────────────────────────────────────── */
     let cart = JSON.parse(localStorage.getItem('phenome_cart') || '[]');
     let currentStep = 1;
 
     const calcSub   = () => cart.reduce((s, i) => s + i.price * i.qty, 0);
     const calcTotal = () => calcSub() + (cart.length ? DELIVERY_FEE : 0);
 
-    /* ══════════════════════════════════════════════
-       BUILD 1 — localStorage form persistence
-       All field IDs that we persist
-    ══════════════════════════════════════════════ */
-    const DRAFT_FIELDS = ['f-name','f-email','f-phone','f-street','f-suburb','f-city','f-postal','f-province','f-notes'];
+    /* ═══════════════════════════════════════════
+       BUILD 2 — Delivery date calculator
+       Skips weekends + South African public holidays 2025/2026.
+       Returns { from: Date, to: Date } for a 2–3 business-day window.
+    ═══════════════════════════════════════════ */
+    const SA_HOLIDAYS = new Set([
+      '2025-01-01','2025-03-21','2025-04-18','2025-04-19','2025-04-21',
+      '2025-04-27','2025-05-01','2025-06-16','2025-08-09','2025-09-24',
+      '2025-12-16','2025-12-25','2025-12-26',
+      '2026-01-01','2026-03-21','2026-04-03','2026-04-06','2026-04-07',
+      '2026-04-27','2026-05-01','2026-06-16','2026-08-10','2026-09-24',
+      '2026-12-16','2026-12-25','2026-12-26'
+    ]);
 
-    /** Read all fields → save to localStorage */
-    function saveDraft() {
-      const draft = {};
-      DRAFT_FIELDS.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) draft[id] = el.value;
-      });
-      localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+    function isBusinessDay(d) {
+      const day = d.getDay();
+      if (day === 0 || day === 6) return false;
+      const key = d.toISOString().slice(0, 10);
+      return !SA_HOLIDAYS.has(key);
     }
 
-    /** Load draft → populate fields, return true if any data found */
+    function addBusinessDays(startDate, n) {
+      const d = new Date(startDate);
+      let added = 0;
+      while (added < n) {
+        d.setDate(d.getDate() + 1);
+        if (isBusinessDay(d)) added++;
+      }
+      return d;
+    }
+
+    function fmtDate(d) {
+      return d.toLocaleDateString('en-ZA', { weekday: 'short', day: 'numeric', month: 'short' });
+    }
+
+    function getDeliveryWindow() {
+      const now  = new Date();
+      /* If order placed after 14:00 SAST, start counting from next business day */
+      const cutoff = 14;
+      const hourSAST = now.getUTCHours() + 2;
+      const base = (hourSAST >= cutoff && isBusinessDay(now))
+        ? addBusinessDays(now, 1)
+        : (isBusinessDay(now) ? now : addBusinessDays(now, 1));
+
+      const from = addBusinessDays(base, 1);
+      const to   = addBusinessDays(base, 3);
+      return `${fmtDate(from)} – ${fmtDate(to)}`;
+    }
+
+    /* Populate all delivery date elements */
+    function renderDeliveryDate() {
+      const range = getDeliveryWindow();
+      /* Step 2 banner */
+      const b2 = document.getElementById('deliveryDateText2');
+      if (b2) b2.textContent = `Est. delivery: ${range}`;
+      /* Step 3 totals row */
+      const rv = document.getElementById('rv-delivery-date');
+      if (rv) rv.textContent = range;
+      /* Right-column summary — injected by renderSummary */
+      const sc = document.getElementById('summaryDeliveryDate');
+      if (sc) sc.textContent = range;
+      /* Mobile summary */
+      const mc = document.getElementById('mobileDeliveryDate');
+      if (mc) mc.textContent = range;
+    }
+
+    /* ═══════════════════════════════════════════
+       BUILD 1 — localStorage draft persistence
+    ═══════════════════════════════════════════ */
+    const DRAFT_FIELDS = ['f-name','f-email','f-phone','f-street','f-suburb','f-city','f-postal','f-province','f-notes'];
+
+    function saveDraft() {
+      const d = {};
+      DRAFT_FIELDS.forEach(id => { const el = document.getElementById(id); if (el) d[id] = el.value; });
+      localStorage.setItem(DRAFT_KEY, JSON.stringify(d));
+    }
     function loadDraft() {
       try {
         const raw = localStorage.getItem(DRAFT_KEY);
         if (!raw) return false;
-        const draft = JSON.parse(raw);
-        let found = false;
+        const d = JSON.parse(raw); let found = false;
         DRAFT_FIELDS.forEach(id => {
-          if (draft[id] !== undefined && draft[id] !== '') {
-            const el = document.getElementById(id);
-            if (el) { el.value = draft[id]; found = true; }
+          if (d[id] !== undefined && d[id] !== '') {
+            const el = document.getElementById(id); if (el) { el.value = d[id]; found = true; }
           }
         });
         return found;
       } catch(e) { return false; }
     }
-
-    /** Clear the draft (called after successful payment redirect) */
-    function clearDraft() {
-      localStorage.removeItem(DRAFT_KEY);
-    }
-
-    /** Attach input listeners to every field so every keystroke saves */
+    function clearDraft() { localStorage.removeItem(DRAFT_KEY); }
     function attachDraftListeners() {
       DRAFT_FIELDS.forEach(id => {
-        const el = document.getElementById(id);
-        if (!el) return;
+        const el = document.getElementById(id); if (!el) return;
         const evt = (el.tagName === 'SELECT' || el.type === 'checkbox') ? 'change' : 'input';
         el.addEventListener(evt, saveDraft);
       });
     }
-
-    /** Show the "Details restored" toast for 3 seconds */
     function showRestoredToast() {
-      const toast = document.getElementById('coToast');
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 3000);
+      const t = document.getElementById('coToast'); t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
     }
 
-    /* ── Initialise ───────────────────────────────── */
+    /* ─ Init ────────────────────────────────────── */
     (function init() {
       if (!cart.length) {
         document.getElementById('checkoutContent').style.display = 'none';
@@ -625,74 +679,69 @@
       }
       renderSummary();
       renderMobileSummary();
+      renderDeliveryDate();
       attachDraftListeners();
-
-      /* Restore draft — show toast if data was pre-filled */
       const wasRestored = loadDraft();
-      if (wasRestored) {
-        /* Small delay so the user sees the fields fill in first */
-        setTimeout(showRestoredToast, 400);
-      }
+      if (wasRestored) setTimeout(showRestoredToast, 400);
     })();
 
-    /* ── Render right-column summary ─────────────── */
+    /* ─ Render summary col ───────────────────────── */
     function renderSummary() {
       document.getElementById('summaryItems').innerHTML = cart.map(item => {
         const img = PRODUCT_IMGS[item.productId] || '';
-        return `
-          <div class="co-item">
-            <div class="co-item-img">
-              ${img ? `<img src="${img}" alt="${item.name}" loading="lazy" />` : ''}
-              <span class="co-item-qty-badge">${item.qty}</span>
-            </div>
-            <div class="co-item-info">
-              <div class="co-item-name">${item.name}</div>
-              <div class="co-item-var">${item.variant}</div>
-            </div>
-            <div class="co-item-price">R${item.price * item.qty}</div>
-          </div>`;
+        return `<div class="co-item">
+          <div class="co-item-img">
+            ${img ? `<img src="${img}" alt="${item.name}" loading="lazy" />` : ''}
+            <span class="co-item-qty-badge">${item.qty}</span>
+          </div>
+          <div class="co-item-info">
+            <div class="co-item-name">${item.name}</div>
+            <div class="co-item-var">${item.variant}</div>
+          </div>
+          <div class="co-item-price">R${item.price * item.qty}</div>
+        </div>`;
       }).join('');
-
       document.getElementById('summaryTotals').innerHTML = `
         <div class="co-total-row"><span>Subtotal</span><span>R${calcSub()}</span></div>
         <div class="co-total-row"><span>Delivery</span><span>R${DELIVERY_FEE}</span></div>
+        <div class="co-total-row delivery-date"><span>🚚 Est. delivery</span><span id="summaryDeliveryDate">–</span></div>
         <div class="co-divider" style="margin:6px 0"></div>
         <div class="co-total-row grand"><span>Total</span><span>R${calcTotal()}</span></div>`;
     }
 
-    /* ── Render mobile summary ────────────────────── */
+    /* ─ Render mobile summary ────────────────────── */
     function renderMobileSummary() {
       document.getElementById('msTotalDisplay').textContent = `R${calcTotal()}`;
       document.getElementById('mobileItems').innerHTML = cart.map(item => {
         const img = PRODUCT_IMGS[item.productId] || '';
-        return `
-          <div class="co-item">
-            <div class="co-item-img">
-              ${img ? `<img src="${img}" alt="${item.name}" loading="lazy" />` : ''}
-              <span class="co-item-qty-badge">${item.qty}</span>
-            </div>
-            <div class="co-item-info">
-              <div class="co-item-name">${item.name}</div>
-              <div class="co-item-var">${item.variant}</div>
-            </div>
-            <div class="co-item-price">R${item.price * item.qty}</div>
-          </div>`;
+        return `<div class="co-item">
+          <div class="co-item-img">
+            ${img ? `<img src="${img}" alt="${item.name}" loading="lazy" />` : ''}
+            <span class="co-item-qty-badge">${item.qty}</span>
+          </div>
+          <div class="co-item-info">
+            <div class="co-item-name">${item.name}</div>
+            <div class="co-item-var">${item.variant}</div>
+          </div>
+          <div class="co-item-price">R${item.price * item.qty}</div>
+        </div>`;
       }).join('');
       document.getElementById('mobileTotals').innerHTML = `
         <div class="co-total-row"><span>Subtotal</span><span>R${calcSub()}</span></div>
         <div class="co-total-row"><span>Delivery</span><span>R${DELIVERY_FEE}</span></div>
+        <div class="co-total-row delivery-date"><span>🚚 Est. delivery</span><span id="mobileDeliveryDate">–</span></div>
         <div class="co-divider" style="margin:6px 0"></div>
         <div class="co-total-row grand"><span>Total</span><span>R${calcTotal()}</span></div>`;
     }
 
     function toggleMobileSummary() {
-      const body    = document.getElementById('mobileSummaryBody');
+      const body = document.getElementById('mobileSummaryBody');
       const chevron = document.getElementById('msChevron');
-      const open    = body.classList.toggle('open');
+      const open = body.classList.toggle('open');
       chevron.style.transform = open ? 'rotate(180deg)' : '';
     }
 
-    /* ── Step navigation ─────────────────────────── */
+    /* ─ Step nav ────────────────────────────────── */
     function goStep(n) {
       if (n > currentStep) {
         if (currentStep === 1 && !validateStep1()) return;
@@ -702,17 +751,17 @@
       document.getElementById(`panel-${n}`).classList.add('active');
       for (let i = 1; i <= 3; i++) {
         const el = document.getElementById(`breadcrumb-${i}`);
-        el.classList.remove('active', 'done');
+        el.classList.remove('active','done');
         if (i < n)  el.classList.add('done');
         if (i === n) el.classList.add('active');
       }
       currentStep = n;
       if (n >= 2) populateDoneContact();
-      if (n >= 3) { populateDoneDelivery(); populateReview(); }
+      if (n >= 3) { populateDoneDelivery(); populateReview(); renderDeliveryDate(); }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    /* ── Validation ──────────────────────────────── */
+    /* ─ Validation ─────────────────────────────── */
     function setFieldError(id, errId, show) {
       document.getElementById(id).classList.toggle('error', show);
       document.getElementById(errId).classList.toggle('show', show);
@@ -731,19 +780,17 @@
       const suburb = document.getElementById('f-suburb').value.trim();
       const city   = document.getElementById('f-city').value.trim();
       const postal = document.getElementById('f-postal').value.trim();
-      setFieldError('f-street', 'err-street', street.length < 3);
-      setFieldError('f-suburb', 'err-suburb', suburb.length < 2);
-      setFieldError('f-city',   'err-city',   city.length < 2);
-      setFieldError('f-postal', 'err-postal', postal.length < 4);
+      setFieldError('f-street','err-street', street.length < 3);
+      setFieldError('f-suburb','err-suburb', suburb.length < 2);
+      setFieldError('f-city',  'err-city',   city.length < 2);
+      setFieldError('f-postal','err-postal', postal.length < 4);
       return street.length >= 3 && suburb.length >= 2 && city.length >= 2 && postal.length >= 4;
     }
 
-    /* ── Done cards ──────────────────────────────── */
+    /* ─ Done cards ─────────────────────────────── */
     function populateDoneContact() {
       const val = `${document.getElementById('f-name').value.trim()} · ${document.getElementById('f-email').value.trim()}`;
-      ['done-contact-val','done-contact-val-2'].forEach(id => {
-        const el = document.getElementById(id); if (el) el.textContent = val;
-      });
+      ['done-contact-val','done-contact-val-2'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = val; });
     }
     function populateDoneDelivery() {
       const s = document.getElementById('f-street').value.trim();
@@ -753,7 +800,7 @@
       document.getElementById('done-delivery-val').textContent = `${s}, ${u}, ${c}, ${p}`;
     }
 
-    /* ── Review ──────────────────────────────────── */
+    /* ─ Review ──────────────────────────────────── */
     function populateReview() {
       document.getElementById('reviewItems').innerHTML = cart.map(item => `
         <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--glass-border);gap:12px">
@@ -763,15 +810,13 @@
           </div>
           <div style="font-weight:700;color:var(--accent);white-space:nowrap">R${item.price * item.qty}</div>
         </div>`).join('');
-      const sub   = calcSub();
-      const total = calcTotal();
-      document.getElementById('rv-subtotal').textContent = `R${sub}`;
+      document.getElementById('rv-subtotal').textContent = `R${calcSub()}`;
       document.getElementById('rv-delivery').textContent  = `R${DELIVERY_FEE}`;
-      document.getElementById('rv-total').textContent     = `R${total}`;
-      document.getElementById('payBtnTotal').textContent  = total;
+      document.getElementById('rv-total').textContent     = `R${calcTotal()}`;
+      document.getElementById('payBtnTotal').textContent  = calcTotal();
     }
 
-    /* ── Handle Pay ──────────────────────────────── */
+    /* ─ Pay ──────────────────────────────────────── */
     async function handlePay() {
       const btn = document.getElementById('payBtn');
       btn.disabled = true;
@@ -792,12 +837,7 @@
         document.getElementById('loadingMsg').textContent = 'Saving your order…';
         const orderRes = await fetch(`${SUPABASE_URL}/rest/v1/shop_orders`, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'apikey': SUPABASE_ANON,
-            'Authorization': `Bearer ${SUPABASE_ANON}`,
-            'Prefer': 'return=representation'
-          },
+          headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_ANON, 'Authorization': `Bearer ${SUPABASE_ANON}`, 'Prefer': 'return=representation' },
           body: JSON.stringify({
             customer_name: name, customer_email: email, customer_phone: phone,
             delivery_address: deliveryAddress, items: cart,
@@ -823,23 +863,19 @@
         const redirect = cd.redirectUrl || cd.url;
         if (!redirect) throw new Error('No payment URL returned. Please try again.');
 
-        /* Clear cart AND draft on successful redirect */
-        cart = [];
-        localStorage.setItem('phenome_cart', '[]');
-        clearDraft();
+        cart = []; localStorage.setItem('phenome_cart', '[]'); clearDraft();
         window.location.href = redirect;
 
       } catch (err) {
         document.getElementById('coLoading').classList.remove('show');
         btn.disabled = false;
         const alertEl = document.getElementById('alert-3');
-        alertEl.textContent = err.message;
-        alertEl.classList.add('show');
+        alertEl.textContent = err.message; alertEl.classList.add('show');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
 
-    /* ── Handle cancelled return ─────────────────── */
+    /* ─ Cancelled return ─────────────────────────── */
     (function checkReturn() {
       const params = new URLSearchParams(window.location.search);
       if (params.get('payment') === 'cancelled') {
@@ -847,10 +883,10 @@
         setTimeout(() => {
           const el = document.getElementById('alert-3');
           if (el) {
-            el.style.background   = 'rgba(251,191,36,0.08)';
-            el.style.borderColor  = 'rgba(251,191,36,0.28)';
-            el.style.color        = '#fbbf24';
-            el.textContent        = 'Payment was cancelled — no charge was made. Review your order and try again.';
+            el.style.background  = 'rgba(251,191,36,0.08)';
+            el.style.borderColor = 'rgba(251,191,36,0.28)';
+            el.style.color       = '#fbbf24';
+            el.textContent       = 'Payment was cancelled — no charge was made. Review your order and try again.';
             el.classList.add('show');
           }
         }, 300);
